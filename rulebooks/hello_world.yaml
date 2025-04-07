@@ -1,0 +1,14 @@
+- name: "My first EDA"
+  hosts: all
+
+  sources:
+    - ansible.eda.tick:
+        delay: 5
+
+  rules:
+    - name: "Say Hello"
+      condition: true
+      action:
+        run_job_template:
+          name: "Hello World"
+          organization: "Default"
