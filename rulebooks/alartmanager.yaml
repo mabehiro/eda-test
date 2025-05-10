@@ -9,6 +9,7 @@
         data_host_path: labels.instance
         data_path_separator: .
         skip_original_data: true
+        ## Create Route on the Openshift, and bind with service.
 
   rules:
     - name: "debug"
@@ -16,6 +17,13 @@
       action:
         print_event:
           pretty: true
+
+    - name: "Say Hello"
+      condition: true
+      action:
+        run_job_template:
+          name: "Hello World"
+          organization: "Default"
 
     # - name: SELinux was enabled
     #   condition: event.alert.labels.alertname == "selinux disabled" and event.alert.status == "resolved"
@@ -27,3 +35,28 @@
     #   condition: event.alert is defined
     #   action:
     #     debug:
+
+
+    # - name: New admin user
+    #   condition: >
+    #     event.body.fields.role is search("SYSTEM_ROLE_ADMIN")
+    #     and event.body.tags.username != "admin"
+    #     and event.body.tags.username != "student"
+    #   action:
+    #     post_event:
+    #       event:
+    #         new_user: "{{ event.body.tags.username }}"
+    #         managed_node: "{{ event.body.tags.source }}"
+
+
+    # - name: Send a chat message
+    #   condition: event.new_user is defined
+    #   action:
+    #     run_job_template:
+    #       name: Send a message to mattermost
+    #       organization: Default
+    #       post_events: true
+    #       job_args:
+    #         extra_vars:
+    #           admin: "{{ event.new_user }}"
+    #           node: "{{ event.managed_node }}"
