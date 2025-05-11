@@ -16,7 +16,7 @@
       condition: true
       action:
         run_job_template:
-          name: "Metro DR Failover Workflow"
+          name: "MetroDRFailoverWorkflow"
           organization: "Default"
 
     # - name: "Say Hello"
