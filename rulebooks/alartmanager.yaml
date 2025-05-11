@@ -15,7 +15,7 @@
     - name: "Trigger Metro DR Flow"
       condition: true
       action:
-        run_job_template:
+        run_workflow_template:
           name: "MetroDRFailoverWorkflow"
           organization: "Default"
 
