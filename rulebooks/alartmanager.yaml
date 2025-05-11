@@ -12,14 +12,12 @@
         ## Create Route on the Openshift, and bind with service.
 
   rules:
-    - name: "Debug and Trigger Workflow"
+    - name: "Trigger Metro DR Flow"
       condition: true
-      block:
-        - print_event:
-            pretty: true
-        - run_job_template:
-            name: "Metro DR Failover Workflow"
-            organization: "Default"
+      action:
+        run_job_template:
+          name: "Metro DR Failover Workflow"
+          organization: "Default"
 
     # - name: "Say Hello"
     #   condition: true
