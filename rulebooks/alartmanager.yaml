@@ -12,19 +12,19 @@
         ## Create Route on the Openshift, and bind with service.
 
   rules:
-    # - name: "Trigger Metro DR Flow"
-    #   condition: true
-    #   action:
-    #     run_job_template:
-    #       name: "MetroDRFailoverWorkflow"
-    #       organization: "Default"
-
-    - name: "Say Hello"
+    - name: "Trigger Metro DR Flow"
       condition: true
       action:
         run_job_template:
-          name: "Hello World"
+          name: "MetroDRFailoverWorkflow"
           organization: "Default"
+
+    # - name: "Say Hello"
+    #   condition: true
+    #   action:
+    #     run_job_template:
+    #       name: "Hello World"
+    #       organization: "Default"
 
     # - name: SELinux was enabled
     #   condition: event.alert.labels.alertname == "selinux disabled" and event.alert.status == "resolved"
